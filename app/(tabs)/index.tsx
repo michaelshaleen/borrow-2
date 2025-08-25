@@ -13,36 +13,9 @@ export default function HomeScreen() {
 
   const handleSubmit = async () => {
     console.log('Submitted:', { name, phone });
-    if (name, phone) {
-      alert(`Submitted: Name - ${name}, Phone - ${phone}`);
-    }
-    try {
-      // Make the POST request with axios
-      const response = await axios.post<ApiResponse>(
-        'https://your-api-endpoint.com/submit', // Replace with your API URL
-        formData,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            // Add other headers if needed, e.g., Authorization
-          },
-        }
-      );
-
-      // Handle successful response
-      setSuccess(response.data.message || 'Form submitted successfully!');
-    } catch (err) {
-      // Handle errors
-      const error = err as AxiosError;
-      setError(error.response?.data?.message || 'Failed to submit form.');
-    } finally {
-      setLoading(false);
-    }
-  };
-    // Add your submit logic here
-  };
-
-
+    alert(`Submitted: Name - ${name}, Phone - ${phone}`);
+  }
+  
 
   //try {
       // Make the PUT request
