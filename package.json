@@ -10,7 +10,8 @@
     "web": "expo start --web",
     "lint": "expo lint",
     "start server": "node server.js",
-    "dev": "nodemon server.js"
+ 
+   "dev": "nodemon server.js"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.1.0",
