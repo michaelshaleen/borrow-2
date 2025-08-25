@@ -5,13 +5,40 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import axios, { AxiosError } from 'axios';
 
 export default function HomeScreen() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('Submitted:', { name, phone });
+    if (name, phone) {
+      alert(`Submitted: Name - ${name}, Phone - ${phone}`);
+    }
+    try {
+      // Make the POST request with axios
+      const response = await axios.post<ApiResponse>(
+        'https://your-api-endpoint.com/submit', // Replace with your API URL
+        formData,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            // Add other headers if needed, e.g., Authorization
+          },
+        }
+      );
+
+      // Handle successful response
+      setSuccess(response.data.message || 'Form submitted successfully!');
+    } catch (err) {
+      // Handle errors
+      const error = err as AxiosError;
+      setError(error.response?.data?.message || 'Failed to submit form.');
+    } finally {
+      setLoading(false);
+    }
+  };
     // Add your submit logic here
   };
 
@@ -64,6 +91,7 @@ export default function HomeScreen() {
         />
         <Button title="Submit" onPress={handleSubmit} />
       </ThemedView>
+
     </ParallaxScrollView>
   );
 }
@@ -96,5 +124,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+    color: "red",
   },
 });
