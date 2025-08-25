@@ -12,6 +12,10 @@ app.use(express.json()); // Parse JSON bodies
 // Routes
 app.use('/api', apiRoutes);
 
+app.post('/api/users', (req, res) => {
+  res.send('API is running...');
+});
+
 // Start server
 const PORT = process.env.PORT || 3306;
 app.listen(PORT, () => {
