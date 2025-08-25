@@ -5,17 +5,17 @@ import { HelloWave } from '@/components/HelloWave';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
+import axios, { AxiosError } from 'axios';
 
 export default function HomeScreen() {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     console.log('Submitted:', { name, phone });
-    // Add your submit logic here
-  };
-
-
+    alert(`Submitted: Name - ${name}, Phone - ${phone}`);
+  }
+  
 
   //try {
       // Make the PUT request
@@ -64,6 +64,7 @@ export default function HomeScreen() {
         />
         <Button title="Submit" onPress={handleSubmit} />
       </ThemedView>
+
     </ParallaxScrollView>
   );
 }
@@ -96,5 +97,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     paddingHorizontal: 10,
+    color: "red",
   },
 });
