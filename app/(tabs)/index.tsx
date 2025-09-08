@@ -13,14 +13,14 @@ export default function HomeScreen() {
 
   const handleSubmit = async () => {
     console.log('handle submit function:', { name, phone });
-    axios.post('http://localhost:3306/api/users', { name, phone })
+    axios.post('http://localhost:8081/api/users', { name, phone })
       .then(response => {
         console.log('Response:', response.data);
         alert('Profile updated successfully!');
       })
       .catch((error: AxiosError) => {
         console.error('Error updating profile:', error);
-        alert(`Error:Something went wrong - ${error.message}`);
+        // alert(`Error:Something went wrong - ${error.message}`);
       })
   };
   
