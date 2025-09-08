@@ -12,11 +12,8 @@ export default function HomeScreen() {
   const [phone, setPhone] = useState('');
 
   const handleSubmit = async () => {
-            alert(`hit handle submit function`);
-
-    console.log('Submitted:', { name, phone });
-    alert(`Submitted: Name - ${name}, Phone - ${phone}`);
-    axios.post('http://localhost:3306/api/users', { name, phone })
+    console.log('handle submit function:', { name, phone });
+    axios.post('/api/users', { name, phone })
       .then(response => {
         console.log('Response:', response.data);
         alert('Profile updated successfully!');
