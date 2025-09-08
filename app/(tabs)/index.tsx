@@ -13,7 +13,7 @@ export default function HomeScreen() {
 
   const handleSubmit = async () => {
     console.log('handle submit function:', { name, phone });
-    axios.post('/api/users', { name, phone })
+    axios.post('http://localhost:3306/api/users', { name, phone })
       .then(response => {
         console.log('Response:', response.data);
         alert('Profile updated successfully!');
