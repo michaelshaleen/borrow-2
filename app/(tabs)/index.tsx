@@ -12,6 +12,8 @@ export default function HomeScreen() {
   const [phone, setPhone] = useState('');
 
   const handleSubmit = async () => {
+            alert(`hit handle submit function`);
+
     console.log('Submitted:', { name, phone });
     alert(`Submitted: Name - ${name}, Phone - ${phone}`);
     axios.post('http://localhost:3306/api/users', { name, phone })
@@ -21,7 +23,7 @@ export default function HomeScreen() {
       })
       .catch((error: AxiosError) => {
         console.error('Error updating profile:', error);
-        alert(`Error:Something went wrong this place'}`);
+        alert(`Error:Something went wrong - ${error.message}`);
       })
   };
   
