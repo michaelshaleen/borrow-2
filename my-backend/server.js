@@ -7,10 +7,7 @@ app.use(cors());
 app.use(express.json());
 
 app.post('/api/register', (req, res) => {
-<<<<<<< HEAD
-=======
   console.log(req.body, "req.body in server.js");
->>>>>>> bbefb12a9bdcbfb078b116cd10936f5a0cfabdfc
   console.log("hit post /api/register");
   const { username, email, password } = req.body;
 
