@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet,Platform } from 'react-native';
 import axios from 'axios';
+
 
 interface FormData {
   username: string;
@@ -9,6 +10,7 @@ interface FormData {
 }
 
 const RegistrationForm: React.FC = () => {
+  
   const [formData, setFormData] = useState<FormData>({
     username: '',
     email: '',
@@ -21,9 +23,15 @@ const RegistrationForm: React.FC = () => {
   };
 
   const handleSubmit = async () => {
+    const BASE_URL = Platform.OS === 'android' ? 'http://10.0.2.2:3000' : 'http://localhost:3000';
     try {
       console.log('Submitting form data:', formData);
-      const response = await axios.post('http://10.0.2.2:3000/api/register', formData);
+      // const response = await axios.post('http://10.0.2.2:3000/api/register', formData);
+      const response = await axios.post(`${BASE_URL}/api/register`, formData, { timeout: 10000 });
+
+//       const response = await axios.post('http://localhost:8081/api/users', formData, {
+//   timeout: 10000,
+// });
       setMessage(response.data.message);
     } catch (error: any) {
       setMessage(error.response?.data?.error || 'Registration failed');
